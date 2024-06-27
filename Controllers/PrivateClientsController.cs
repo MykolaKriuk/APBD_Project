@@ -1,6 +1,7 @@
 using APBD_Projekt.DTOs.PrivateClientDTOs;
 using APBD_Projekt.Exceptions;
 using APBD_Projekt.Services.PrivateClientService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APBD_Projekt.Controllers;
@@ -9,7 +10,8 @@ namespace APBD_Projekt.Controllers;
 [Route("/api/[controller]")]
 public class PrivateClientsController(IPrivateClientService service) : ControllerBase
 {
-    [HttpPost]
+    [Authorize]
+    [HttpPost("add")]
     public async Task<IActionResult> AddNewPrivateClient
         (AddPrivateClientRequestModel clientRequestModel, CancellationToken cancellationToken)
     {
@@ -25,7 +27,8 @@ public class PrivateClientsController(IPrivateClientService service) : Controlle
         return Created();
     }
 
-    [HttpPut("{clientId}")]
+    [Authorize(Roles = "admin")]
+    [HttpPut("update/{clientId}")]
     public async Task<IActionResult> UpdatePrivateClient(int clientId, 
         UpdatePrivateClientRequestModel clientRequestModel, CancellationToken cancellationToken)
     {
@@ -41,7 +44,8 @@ public class PrivateClientsController(IPrivateClientService service) : Controlle
         return NoContent();
     }
 
-    [HttpDelete]
+    [Authorize(Roles = "admin")]
+    [HttpDelete("delete/{clientId}")]
     public async Task<IActionResult> DeletePrivateClient(int clientId, 
         CancellationToken cancellationToken)
     {

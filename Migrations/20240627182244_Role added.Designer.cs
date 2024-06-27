@@ -4,6 +4,7 @@ using APBD_Projekt.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APBD_Projekt.Migrations
 {
     [DbContext(typeof(IncManagerContext))]
-    partial class IncManagerContextModelSnapshot : ModelSnapshot
+    [Migration("20240627182244_Role added")]
+    partial class Roleadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -357,12 +360,6 @@ namespace APBD_Projekt.Migrations
                     b.Property<DateTime>("RefreshTokenExp")
                         .HasColumnType("datetime2")
                         .HasColumnName("Refresh_Token_Exp");
-
-                    b.Property<string>("Salt")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
-                        .HasColumnName("Salt");
 
                     b.Property<string>("WorkerEmail")
                         .IsRequired()

@@ -22,7 +22,8 @@ public class FirmService(IncManagerContext context) : IFirmService
         {
             ClientAddress = clientRequestModel.Address,
             ClientEmail = clientRequestModel.Email,
-            ClientTelNumber = clientRequestModel.TelNum
+            ClientTelNumber = clientRequestModel.TelNum,
+            IsPrivateClient = false
         };
         await context.Clients.AddAsync(newClient, cancellationToken);
 

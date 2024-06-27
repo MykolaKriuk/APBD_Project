@@ -1,6 +1,7 @@
 using APBD_Projekt.DTOs.FirmsDTOs;
 using APBD_Projekt.Exceptions;
 using APBD_Projekt.Services.FirmServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APBD_Projekt.Controllers;
@@ -9,7 +10,8 @@ namespace APBD_Projekt.Controllers;
 [Route("api/[controller]")]
 public class FirmsController(IFirmService service) : ControllerBase
 {
-    [HttpPost]
+    [Authorize]
+    [HttpPost("add")]
     public async Task<IActionResult> AddNewFirm (AddFirmRequestModel requestModel, 
         CancellationToken cancellationToken)
     {
@@ -25,7 +27,8 @@ public class FirmsController(IFirmService service) : ControllerBase
         return Created();
     }
     
-    [HttpPut("{clientId}")]
+    [Authorize(Roles = "admin")]
+    [HttpPut("update/{clientId}")]
     public async Task<IActionResult> UpdateFirm (int clientId, UpdateFirmRequestModel requestModel, 
         CancellationToken cancellationToken)
     {

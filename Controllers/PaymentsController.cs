@@ -1,6 +1,7 @@
 using APBD_Projekt.DTOs.PaymentDTOs;
 using APBD_Projekt.Exceptions;
 using APBD_Projekt.Services.PaymentServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APBD_Projekt.Controllers;
@@ -9,7 +10,8 @@ namespace APBD_Projekt.Controllers;
 [Route("api/[controller]")]
 public class PaymentsController(IPaymentService service) : ControllerBase
 {
-    [HttpPost]
+    [Authorize]
+    [HttpPost("pay")]
     public async Task<IActionResult> PayTheGivenAmountForTheContract(PaymentRequestModel requestModel,
         CancellationToken cancellationToken)
     {

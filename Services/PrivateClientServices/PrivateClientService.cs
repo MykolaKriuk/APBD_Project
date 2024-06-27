@@ -23,7 +23,8 @@ public class PrivateClientService(IncManagerContext context) : IPrivateClientSer
         {
             ClientAddress = clientRequestModel.Address,
             ClientEmail = clientRequestModel.Email,
-            ClientTelNumber = clientRequestModel.TelNum
+            ClientTelNumber = clientRequestModel.TelNum,
+            IsPrivateClient = true
         };
         await context.Clients.AddAsync(newClient, cancellationToken);
 

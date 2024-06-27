@@ -1,6 +1,7 @@
 using APBD_Projekt.DTOs.IncomeDTOs;
 using APBD_Projekt.Exceptions;
 using APBD_Projekt.Services.IncomeServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APBD_Projekt.Controllers;
@@ -15,6 +16,7 @@ public class IncomeController : ControllerBase
     {
         this.service = service;
     }
+    [Authorize]
     [HttpGet("current")]
     public async Task<IActionResult> GetCurrentIncome([FromQuery]IncomeRequestModel requestModel,
         CancellationToken cancellationToken, [FromQuery]string targetCurrency="PLN")
@@ -32,6 +34,7 @@ public class IncomeController : ControllerBase
         return Ok(response);
     }
     
+    [Authorize]
     [HttpGet("planned")]
     public async Task<IActionResult> GetPlannedIncome([FromQuery]IncomeRequestModel requestModel,
         CancellationToken cancellationToken, [FromQuery]string targetCurrency="PLN")

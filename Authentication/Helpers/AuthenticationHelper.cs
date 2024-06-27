@@ -3,7 +3,7 @@ namespace APBD_Projekt.Authentication.Helpers;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
-public static class AuthenticationHelper
+public class AuthenticationHelper
 {
     public static Tuple<string, string> GetHashedPasswordAndSalt(string password)
     {

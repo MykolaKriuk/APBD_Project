@@ -1,6 +1,7 @@
 using APBD_Projekt.DTOs.ContractsDTOs;
 using APBD_Projekt.Exceptions;
 using APBD_Projekt.Services.ContractServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APBD_Projekt.Controllers;
@@ -9,7 +10,8 @@ namespace APBD_Projekt.Controllers;
 [Route("api/[controller]")]
 public class ContractsController(IContractService service) : ControllerBase
 {
-    [HttpPost]
+    [Authorize]
+    [HttpPost("add")]
     public async Task<IActionResult> AddNewContract(AddContractRequestModel requestModel, CancellationToken cancellationToken)
     {
         try
@@ -40,7 +42,8 @@ public class ContractsController(IContractService service) : ControllerBase
         return Created();
     }
 
-    [HttpDelete("{contractId}")]
+    [Authorize]
+    [HttpDelete("delete/{contractId}")]
     public async Task<IActionResult> DeleteContract(int contractId, CancellationToken cancellationToken)
     {
         try

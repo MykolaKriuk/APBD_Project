@@ -18,10 +18,18 @@ public class Worker
     [MaxLength(50)]
     [EmailAddress(ErrorMessage = "Invalid e-mail format")]
     public string WorkerEmail { get; set; }
+
+    [Column("Role")]
+    [MaxLength(20)]
+    public string WorkerRole { get; set; }
     
     [Column("Hashed_Password")]
     [MaxLength(64)]
     public string HashedPassword { get; set; }
+    
+    [Column("Salt")]
+    [MaxLength(100)]
+    public string Salt { get; set; }
     
     [Column("Refresh_Token")]
     [MaxLength(256)]
