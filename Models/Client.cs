@@ -22,6 +22,9 @@ public class Client
     [Column("Tel_Num")]
     [MaxLength(9)]
     public string ClientTelNumber { get; set; }
+    
+    [Column("Is_Private_Client")]
+    public bool IsPrivateClient { get; set; }
 
     public ICollection<Payment> Payments { get; set; }
     public ICollection<Contract> Contracts { get; set; }

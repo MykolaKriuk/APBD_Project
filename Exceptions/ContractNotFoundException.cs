@@ -1,3 +1,3 @@
 namespace APBD_Projekt.Exceptions;
 
-public class ContractNotFoundException(string message) : Exception;
+public class ContractNotFoundException(string message) : Exception(message);
