@@ -24,4 +24,5 @@ public class Client
     public string ClientTelNumber { get; set; }
 
     public ICollection<Payment> Payments { get; set; }
+    public ICollection<Contract> Contracts { get; set; }
 }

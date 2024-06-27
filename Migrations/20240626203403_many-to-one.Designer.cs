@@ -4,6 +4,7 @@ using APBD_Projekt.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APBD_Projekt.Migrations
 {
     [DbContext(typeof(IncManagerContext))]
-    partial class IncManagerContextModelSnapshot : ModelSnapshot
+    [Migration("20240626203403_many-to-one")]
+    partial class manytoone
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -317,10 +320,6 @@ namespace APBD_Projekt.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)")
                         .HasColumnName("Version");
-
-                    b.Property<decimal>("VersionPrice")
-                        .HasColumnType("money")
-                        .HasColumnName("Price");
 
                     b.HasKey("VersionId");
 

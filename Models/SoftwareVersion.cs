@@ -20,6 +20,9 @@ public class SoftwareVersion
     [MaxLength(20)]
     public string VersionNum { get; set; }
     
+    [Column("Price", TypeName = "money")]
+    public decimal VersionPrice { get; set; }
+    
     [Column("Version_Info")]
     [MaxLength(200)]
     public string VersionInfo { get; set; }
