@@ -6,6 +6,7 @@ using APBD_Projekt.Services.FirmServices;
 using APBD_Projekt.Services.IncomeServices;
 using APBD_Projekt.Services.PaymentServices;
 using APBD_Projekt.Services.PrivateClientService;
+using APBD_Projekt.Services.PrivateClientServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 

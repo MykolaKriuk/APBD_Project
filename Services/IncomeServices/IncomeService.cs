@@ -8,12 +8,12 @@ namespace APBD_Projekt.Services.IncomeServices;
 public class IncomeService : IIncomeService
 {
     private readonly IncManagerContext _context;
-    private readonly CurrencyService exchangeRateService;
+    private readonly CurrencyService _exchangeRateService;
 
     public IncomeService(IncManagerContext context, CurrencyService exchangeRateService)
     {
-        this._context = context;
-        this.exchangeRateService = exchangeRateService;
+        _context = context;
+        _exchangeRateService = exchangeRateService;
     }
 
     public async Task<string> GetCurrentIncome(string targetCurrency, IncomeRequestModel requestModel, CancellationToken cancellationToken)
@@ -41,7 +41,7 @@ public class IncomeService : IIncomeService
                 .SumAsync(c => c.ContractPrice, cancellationToken);
         }
 
-        var exchangeRate = await exchangeRateService.GetExchangeRateAsync(targetCurrency);
+        var exchangeRate = await _exchangeRateService.GetExchangeRateAsync(targetCurrency);
         return $"Current income is {Math.Round(income / exchangeRate, 2)} {targetCurrency}";
     }
     
@@ -68,7 +68,7 @@ public class IncomeService : IIncomeService
                 .SumAsync(c => c.ContractPrice, cancellationToken);
         }
 
-        var exchangeRate = await exchangeRateService.GetExchangeRateAsync(targetCurrency);
+        var exchangeRate = await _exchangeRateService.GetExchangeRateAsync(targetCurrency);
         return $"Planned income is {Math.Round(income / exchangeRate, 2)} {targetCurrency}";
     }
 }

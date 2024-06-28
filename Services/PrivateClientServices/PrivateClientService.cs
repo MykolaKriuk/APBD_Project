@@ -2,9 +2,10 @@ using APBD_Projekt.Contexts;
 using APBD_Projekt.DTOs.PrivateClientDTOs;
 using APBD_Projekt.Exceptions;
 using APBD_Projekt.Models;
+using APBD_Projekt.Services.PrivateClientService;
 using Microsoft.EntityFrameworkCore;
 
-namespace APBD_Projekt.Services.PrivateClientService;
+namespace APBD_Projekt.Services.PrivateClientServices;
 
 public class PrivateClientService(IncManagerContext context) : IPrivateClientService
 {
